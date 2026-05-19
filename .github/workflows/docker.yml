@@ -54,13 +54,13 @@ jobs:
           if [ "$BUILD_TYPE" = "Production" ]; then
             TAGS+=("$VERSION" "latest")
             for tag in "${TAGS[@]}"; do
-              ALL_TAGS+=("ghcr.io/${{ OWNER_NAME }}/termix:$tag")
+              ALL_TAGS+=("ghcr.io/${{ env.OWNER_NAME }}/termix:$tag")
               ALL_TAGS+=("docker.io/${{ secrets.DOCKERHUB_USERNAME }}/termix:$tag")
             done
           else
             TAGS+=("dev-$VERSION")
             for tag in "${TAGS[@]}"; do
-              ALL_TAGS+=("ghcr.io/${{ OWNER_NAME }}/termix:$tag")
+              ALL_TAGS+=("ghcr.io/${{ env.OWNER_NAME }}/termix:$tag")
             done
           fi
 
